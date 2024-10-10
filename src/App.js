@@ -18,7 +18,7 @@ import {
   View,
 } from 'react-native';  
 const nom = (textAMostrar) =>{
-  <Text>{textAMostrar}</Text>
+  <Text style={estils.titol}>{textAMostrar}</Text>
 }
 /** A la funció App, dins del return crearem la notra pantalla */
 const App = () => {
