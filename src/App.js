@@ -16,7 +16,7 @@ import {
   StyleSheet,
   
   View,
-} from 'react-native'; 
+} from 'react-native';  
 const nom = (textAMostrar) =>{
   <Text>{textAMostrar}</Text>
 }
