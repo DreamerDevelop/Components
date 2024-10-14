@@ -17,14 +17,14 @@ import {
   
   View,
 } from 'react-native';  
-const nom = (textAMostrar) =>{
-  <Text style={estils.titol}>{textAMostrar}</Text>
+const nom = (textAMostrar,estilos) =>{
+  <Text style={estilos}>{textAMostrar}</Text>
 }
 /** A la funció App, dins del return crearem la notra pantalla */
 const App = () => {
   return (
     <PaperProvider>
-        {nom('Hugo')}
+         {nom('Hugo', estils.titol)}
     </PaperProvider>
   );
 }
