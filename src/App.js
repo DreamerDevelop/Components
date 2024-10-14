@@ -20,15 +20,17 @@ import {
 const nom = (textAMostrar,estilos) =>{
   <Text style={estilos}>{textAMostrar}</Text>
 }
-const dades = () => {
-  <TextInput></TextInput>
-}
+const dades = (arrdatos) => (
+  arrdatos.map((values)=>
+    (<TextInput label={values}></TextInput>)
+));
+const datos = ['Email','Nom'];
 /** A la funció App, dins del return crearem la notra pantalla */
 const App = () => {
   return (
     <PaperProvider>
          {nom('Hugo', estils.titol)}
-         {dades()}
+         {dades(datos)}
     </PaperProvider>
   );
 }
