@@ -9,7 +9,7 @@
 /** IMPORTEM les llibreries necessàries */
 import React from 'react';
 import Partit from './components/Partit'
-import { PaperProvider,Text } from 'react-native-paper';
+import { PaperProvider,Text,TextInput } from 'react-native-paper';
 import {
   ScrollView,
   StatusBar,
@@ -20,11 +20,15 @@ import {
 const nom = (textAMostrar,estilos) =>{
   <Text style={estilos}>{textAMostrar}</Text>
 }
+const dades = () => {
+  <TextInput></TextInput>
+}
 /** A la funció App, dins del return crearem la notra pantalla */
 const App = () => {
   return (
     <PaperProvider>
          {nom('Hugo', estils.titol)}
+         {dades()}
     </PaperProvider>
   );
 }
