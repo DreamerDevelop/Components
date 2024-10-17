@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { PaperProvider, Text, TextInput } from 'react-native-paper';
+import { PaperProvider, Text, TextInput, Button, IconButton } from 'react-native-paper';
 import { ScrollView, StatusBar, StyleSheet, View } from 'react-native';
 
 const estils = StyleSheet.create({
@@ -24,8 +24,15 @@ const estils = StyleSheet.create({
     paddingRight: 12,
     textAlign: 'right',
   },
+  buttonStyle: {
+    marginTop: 20,
+    backgroundColor: 'blue',
+  },
 });
-//ej9
+
+
+const isAdmin = true;
+
 const App = () => {
   const [estilo, setEstilo] = useState(estils.florida);
 
@@ -50,13 +57,30 @@ const App = () => {
     );
   };
 
+  const renderButton = () => {
+    if (isAdmin) {
+      return (
+        <Button
+          icon={() => <IconButton icon="format-list-bulleted" size={20} />}
+          mode="contained"
+          style={estils.buttonStyle}
+          onPress={() => console.log('Botón presionado')}
+        >
+          Llista
+        </Button>
+      );
+    }
+    return null;
+  };
+
   const datos = ['Email', 'Nom'];
 
   return (
     <PaperProvider>
       {nom('Hugo', estils.titol)}
       {dades(datos, estilo)} 
-    </PaperProvider>
+      {renderButton()} 
+      </PaperProvider>
   );
 };
 
