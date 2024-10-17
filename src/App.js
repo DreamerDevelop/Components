@@ -27,17 +27,24 @@ const estils = StyleSheet.create({
 });
 
 const App = () => {
-  const [estilo, setEstilo] = useState(estils.florida); 
+  const [estilo, setEstilo] = useState(estils.florida);
 
   const nom = (textAMostrar, estilos) => {
     return <Text style={estilos}>{textAMostrar}</Text>;
   };
 
   const dades = (arrdatos, estilo) => {
+    const textColor = estilo === estils.florida ? 'white' : 'orange';
+
     return (
       <View style={estilo}>
-        {arrdatos.map((value) => (
-          <TextInput> style={estilo} label={value} </TextInput>
+        {arrdatos.map((value, index) => (
+          <TextInput
+            key={index}
+            style={{ color: textColor }}
+            placeholderTextColor={textColor}
+            label={value}
+          />
         ))}
       </View>
     );
