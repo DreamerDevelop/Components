@@ -25,7 +25,7 @@ const estils = StyleSheet.create({
     textAlign: 'right',
   },
 });
-
+//ej9
 const App = () => {
   const [estilo, setEstilo] = useState(estils.florida);
 
