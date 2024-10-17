@@ -31,7 +31,7 @@ const estils = StyleSheet.create({
 });
 
 
-const isAdmin = true;
+const isAdmin = true; 
 
 const App = () => {
   const [estilo, setEstilo] = useState(estils.florida);
