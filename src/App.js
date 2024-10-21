@@ -1,4 +1,3 @@
-// App.js
 import React from 'react';
 import { Provider as PaperProvider, Text } from 'react-native-paper';
 import { StyleSheet, View } from 'react-native';
