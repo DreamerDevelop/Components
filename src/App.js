@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Provider as PaperProvider, Text, TextInput, HelperText } from 'react-native-paper';
 import { StyleSheet, View } from 'react-native';
-
+//ej4
 const nom = (textAMostrar, estil) => {
   return (
     <Text style={estil} variant='displayLarge'>
