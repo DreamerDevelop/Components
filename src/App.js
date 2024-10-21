@@ -1,11 +1,93 @@
-import React, { useState } from 'react';
-import { PaperProvider, Text, TextInput, Button, IconButton } from 'react-native-paper';
-import { ScrollView, StatusBar, StyleSheet, View } from 'react-native';
+import { Provider as PaperProvider, Text, TextInput, Button } from 'react-native-paper';
+import { ScrollView, StyleSheet, View } from 'react-native';
 
-const estils = StyleSheet.create({
-  titol: {
-    fontSize: 32,
-    fontWeight: 'bold',
+const estil = 'florida';
+const isAdmin = false;
+
+const nom = (estil, textAMostrar) => {
+  return (
+    <Text style={estil} variant='displayLarge'>{textAMostrar}</Text>
+  );
+}
+
+const dades = (inputs) => {
+  const estilPare = () => {
+    return estil === 'florida' ? styles.florida : styles.upv;
+  }
+  
+  const colorInput = () => {
+    return estil === 'florida' ? 'white' : 'orange';
+  }
+
+  return (
+    <View style={estilPare()}>
+      {inputs.map((value, index) => (
+        <TextInput
+          key={index}
+          label={value}
+          placeholder={value}
+          textColor={colorInput()}
+        />
+      ))}
+    </View>
+  )
+}
+
+const botoSiAdmin = () => {
+  if(!isAdmin)
+    return;
+  
+  return (
+    <Button
+      style={{borderRadius: 0}}
+      icon='format-list-bulleted'
+      textColor='white'
+      buttonColor='blue'
+    >
+      INFORMES
+    </Button>
+  );
+}
+
+const App = () => {
+  const inputs = ['Email', 'Nom'];
+  const moduls2Dam = [
+    { nom: 'DIN', professor: 'Manel', hores: 120 },
+    { nom: 'ADA', professor: 'Roberto', hores: 120 },
+    { nom: 'PMDM', professor: 'Paco', hores: 100 },
+    { nom: 'PSP', professor: 'Roberto', hores: 60 },
+    { nom: 'SGE', professor: 'Belén', hores: 100 },
+    { nom: 'Anglés', professor: 'Caterina', hores: 40 },
+    { nom: 'EIE', professor: 'Ana', hores: 60 },
+    ];
+
+  return (
+    <PaperProvider>
+      {nom(styles.text, "Hugo y Manu")}
+      {dades(inputs)}
+      {botoSiAdmin()}
+      <ScrollView>
+        {moduls2Dam.map((value, index) => {
+          let colorFondo = index % 2 === 0 ? '#F48FB1' : '#F8BBD0';
+          
+          return (
+            <View style={{backgroundColor: colorFondo}}>
+              <Text>{index + 1}</Text>
+              <Text>{value.nom}</Text>
+              <Text>{value.professor}</Text>
+              <Text>{value.hores} hores</Text>
+            </View>
+          );
+        })}
+      </ScrollView>
+    </PaperProvider>
+  );
+}
+
+const styles = StyleSheet.create({
+  text: {
+    color: 'blue',
+    fontStyle: 'italic'
   },
   upv: {
     backgroundColor: 'purple',
@@ -24,64 +106,6 @@ const estils = StyleSheet.create({
     paddingRight: 12,
     textAlign: 'right',
   },
-  buttonStyle: {
-    marginTop: 20,
-    backgroundColor: 'blue',
-  },
 });
-
-
-const isAdmin = true; 
-
-const App = () => {
-  const [estilo, setEstilo] = useState(estils.florida);
-
-  const nom = (textAMostrar, estilos) => {
-    return <Text style={estilos}>{textAMostrar}</Text>;
-  };
-
-  const dades = (arrdatos, estilo) => {
-    const textColor = estilo === estils.florida ? 'white' : 'orange';
-
-    return (
-      <View style={estilo}>
-        {arrdatos.map((value, index) => (
-          <TextInput
-            key={index}
-            style={{ color: textColor }}
-            placeholderTextColor={textColor}
-            label={value}
-          />
-        ))}
-      </View>
-    );
-  };
-
-  const renderButton = () => {
-    if (isAdmin) {
-      return (
-        <Button
-          icon={() => <IconButton icon="format-list-bulleted" size={20} />}
-          mode="contained"
-          style={estils.buttonStyle}
-          onPress={() => console.log('Botón presionado')}
-        >
-          Llista
-        </Button>
-      );
-    }
-    return null;
-  };
-
-  const datos = ['Email', 'Nom'];
-
-  return (
-    <PaperProvider>
-      {nom('Hugo', estils.titol)}
-      {dades(datos, estilo)} 
-      {renderButton()} 
-      </PaperProvider>
-  );
-};
 
 export default App;
